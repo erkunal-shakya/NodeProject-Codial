@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codial Home</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-extend.css">	
+	<link rel="stylesheet" href="/css/master_style.css">
+	<link rel="stylesheet" href="/css/skins/_all-skins.css">	
+</head>
+<body class=" skin-blue-light sidebar-collapse">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Header Navbar -->
+    <nav class="navbar">
+	  	
+      <!-- Sidebar toggle button-->
+		  <a href="#">
+			<h4 style="color:white; margin-left: -213px;">Codial User Profile Page</h4>
+		  </a>	
+		
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+		  <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="/images/User.jpg" class="user-image rounded-circle b-2" alt="User Image">
+				<span class="font-size-18">Codial User</span>
+            </a>
+            <ul class="dropdown-menu scale-up">
+              <!-- Menu Body -->
+              <li class="user-body bt-0">
+                <div class="row no-gutters">
+                  <div class="col-12 text-left">
+                    <a href="#"><i class="ion ion-person"></i> My Profile</a>
+                  </div>
+				<div role="separator" class="divider col-12"></div>
+				  <div class="col-12 text-left">
+                    <a href="/users/sign-out"><i class="fa fa-power-off"></i>Logout</a>
+                  </div>				
+                </div>
+                <!-- /.row -->
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">User Details .</h3>
+        </div>
+        <div class="box-body">
+            <ul type="circle">
+                <li>ID: <%=user.id%></li>
+                <li>Email: <%=user.email%></li>
+                <li>Name: <%=user.name%></li>
+            </ul>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          Footer
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+</div>
+
+
+	<!-- jQuery 3 -->
+	<script src="/js/jquery-3.3.1.js"></script>
+	
+	
+	<!-- Bootstrap 4.1-->
+	<script src="/js/bootstrap.min.js"></script>
+
+	
+
+</body>
+
+</html>

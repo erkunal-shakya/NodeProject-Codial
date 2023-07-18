@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/home.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/layouts.css">
+    <%- style%>
+    <title>Layouts</title>
 </head>
 <body>
     <%- include('_header');-%>
+    <H1><%- body %></H1>
+<%- include('_footer');-%>
 
-    <h1><%= name %></h1>
-<script src="/js/home.js"></script>
 </body>
+<%- script %>
+
 </html>
