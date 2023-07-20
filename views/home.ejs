@@ -1,16 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/home.css">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codial Home</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-extend.css">	
+	<link rel="stylesheet" href="/css/master_style.css">
+	<link rel="stylesheet" href="/css/skins/_all-skins.css">	
 </head>
-<body>
-    <%- include('_header');-%>
+<body class=" skin-purple-light sidebar-collapse">
+<!-- Site wrapper -->
+<div class="wrapper">
 
-    <h1><%= name %></h1>
-<script src="/js/home.js"></script>
+  <header class="main-header">
+    <!-- Header Navbar -->
+    <nav class="navbar">
+	  	
+      <!-- Sidebar toggle button-->
+		  <a href="/">
+			<h4 style="color:white; margin-left: -213px;"><%=name%></h4>
+		  </a>	
+        <h1 style="margin-left: -113px;color:white;">Codial Home</h1>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+		  <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="/images/User.jpg" class="user-image rounded-circle b-2" alt="User Image">
+				<span class="font-size-18"><% if (locals.user){%>
+                    <%=user.name%>
+                    <%} else { %>
+                        Click Here
+                        <%}%>
+                </span>
+            </a>
+            <ul class="dropdown-menu scale-up">
+              <!-- Menu Body -->
+              <li class="user-body bt-0">
+                <div class="row no-gutters">
+                  <div class="col-12 text-left">
+                    <% if (locals.user){%>
+
+                    <a href="/users/user_profile"><i class="ion ion-person"></i> My Profile</a>
+                  </div>
+				<div role="separator" class="divider col-12"></div>
+				  <div class="col-12 text-left">
+                        <a href="/users/sign-out"><i class="fa fa-power-off"></i>Logout</a>
+                        <%} else { %>
+                            <a href="/users/login"><i class="fa fa-power-off"></i>Login</a>
+                            <a href="/users/signup"><i class="fa fa-power-off"></i>Signup</a>
+                            <%}%>
+                  </div>
+                  
+                </div>
+                <!-- /.row -->
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add post's</h3>
+        </div>
+        <div class="box-body">
+            <% if (locals.user){%>
+                <form action="/post/postsubmit" method="post">
+                    <div class="form-group">
+                    <textarea class="form-control" name="post" placeholder="Enter your post" cols="8" rows="3" style="width: 350px; height: 67px;"></textarea>
+                </div>
+                <input class="btn btn-primary" type="submit" value="Submit Post">
+                <button  class="btn btn-danger" type="reset" value="Reset" > Reset </button>
+                </form>
+                <%} else { %>
+                    <p><a href="/users/login">For Adding Post Need To Login</a></p>
+                    <%}%>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Codial Post's</h3>
+          </div>
+          <div class="box-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Post</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% for(i of posts){%>
+            <tr>
+                <th scope="row">*</th>
+                <td><%= i.post%></td>
+                <td><sub><%= i.user.name%></sub></td>
+                <td><%= new Date(i.user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                </td>
+                </tr>
+            <%}%>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <div class="box-footer">
+       page Footer Codial Page !   
+    </div>
+    <!-- /.box-footer-->
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+</div>
+
+
+	<!-- jQuery 3 -->
+	<script src="/js/jquery-3.3.1.js"></script>
+	
+	
+	<!-- Bootstrap 4.1-->
+	<script src="/js/bootstrap.min.js"></script>
+
+	
+
 </body>
+
 </html>

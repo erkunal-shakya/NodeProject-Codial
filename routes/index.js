@@ -7,6 +7,7 @@ console.log('Router is loaded');
 router.get('/',HomeCtrl.home);
 // router.get('/action',HomeCtrl.action);
 router.use('/users', require('./users'));
+router.use('/post', require('./post'));
 
 
 module.exports=router;

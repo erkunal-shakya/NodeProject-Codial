@@ -1,7 +1,13 @@
+const PostSchema=require('../models/PostSchema');
+
 module.exports.home=(req,res)=>{
-  return res.render('home',{
-    name:'HOME'
+  PostSchema.find({}).populate('user').exec().then((postdata)=>{
+    return res.render('home',{
+      name:'Codial Home Page',
+      posts:postdata
+    });
   });
+
 }
 
 module.exports.action=(req,res)=>{

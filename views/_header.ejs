@@ -1,7 +1,7 @@
 <header>
     <ul>
         <% if (locals.user){%>
-            <li><%= user.name%></li>
+            <li><a href="/users/user_profile"><%= user.name%></a></li>
             <li><a href="/users/sign-out">Logout</a></li>
             <%} else { %>
                 <li><a href="/users/login">Login</a></li>

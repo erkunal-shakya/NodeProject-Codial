@@ -79,7 +79,7 @@ module.exports.profilesignout=(req,res)=>{
           return res.redirect('back'); // Redirect to homepage or an error page
         }
         // Redirect to a success page or login page
-        res.redirect('/users/login');
+        res.redirect('/');
         console.log('user sign out.');
 
 
