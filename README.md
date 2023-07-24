@@ -7,3 +7,5 @@ also added Locals Authentication using Passport js  liabraray
  ![Uploading Login-Codial.png…]()
 ![Uploading SIgnup-codial.png…]()
 ![Uploading USerProfile-Codial2.png…]()
+
+![Codial-Home](https://github.com/erkunal-shakya/NodeProject-Codial/assets/92636603/0c061899-cc35-4f38-abf7-680ec694b3ed)
