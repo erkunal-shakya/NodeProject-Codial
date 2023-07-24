@@ -8,6 +8,7 @@ router.get('/',HomeCtrl.home);
 // router.get('/action',HomeCtrl.action);
 router.use('/users', require('./users'));
 router.use('/post', require('./post'));
+router.use('/comments', require('./comments'));
 
 
 module.exports=router;

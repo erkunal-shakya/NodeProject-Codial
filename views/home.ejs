@@ -80,7 +80,7 @@
             <% if (locals.user){%>
                 <form action="/post/postsubmit" method="post">
                     <div class="form-group">
-                    <textarea class="form-control" name="post" placeholder="Enter your post" cols="8" rows="3" style="width: 350px; height: 67px;"></textarea>
+                    <textarea class="form-control" required name="post" placeholder="Enter your post" cols="8" rows="3" style="width: 350px; height: 67px;"></textarea>
                 </div>
                 <input class="btn btn-primary" type="submit" value="Submit Post">
                 <button  class="btn btn-danger" type="reset" value="Reset" > Reset </button>
@@ -109,9 +109,32 @@
         <% for(i of posts){%>
             <tr>
                 <th scope="row">*</th>
-                <td><%= i.post%></td>
+                <td><b><%= i.post%></b>
+                <br/>
+                <div class="accordion">
+                  <div class="accordion-heading"><span style="text-align:center;font-weight:bold;">Post Comments</span></div>
+                  <div class="accordion-content">
+                    <form action="/comments/create" method="post">
+                      <div class="form-group w-25">
+                      <input type="text" name="comment"  class="form-control input-sm" placeholder="Add your comment here">
+                      <input type="hidden" name="postid" value="<%=i._id%>">
+                      <input type="submit" class="btn btn-danger btn-sm" value="Add Comment">
+                    </div>
+                    </form>
+                    <div class="post-commnets">
+                      <ul class="post-commentsof-id-<%=i._id%>">
+                        <% for(comment of i.comments){ %> 
+                          <li><p><%= comment.content%> (<small><%=comment.user.name%></small>)</p>
+                        </li>
+                          <%} %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                </td>
                 <td><sub><%= i.user.name%></sub></td>
-                <td><%= new Date(i.user.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                <td><%= new Date(i.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
                 </td>
                 </tr>
             <%}%>
@@ -137,6 +160,7 @@
 	
 	<!-- Bootstrap 4.1-->
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/accordien.js"></script>
 
 	
 
