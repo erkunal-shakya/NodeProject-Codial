@@ -6,6 +6,8 @@
 <meta name="description" content="Authentication forms">
 <meta name="author" content="Arasari Studio">
 <title>codial</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="/css/common.css" rel="stylesheet">
 <link href="/https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&amp;display=swap" rel="stylesheet">
@@ -134,5 +136,29 @@ Already have an account? <a href="/users/login">Login here</a>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/demo.js"></script>
+
+<script>
+    <% if (flash.success && flash.success.length > 0) {%>
+        new Noty({
+            theme: 'relax',
+            text: "<%= flash.success %>",
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500
+            
+        }).show();    
+    <%} %>
+
+    <% if (flash.error && flash.error.length > 0) {%>
+        new Noty({
+            theme: 'relax',
+            text: "<%= flash.error %>",
+            type: 'error',
+            layout: 'topRight',
+            timeout: 1500
+            
+        }).show();    
+    <%} %>
+</script>
 </body>
 </html>

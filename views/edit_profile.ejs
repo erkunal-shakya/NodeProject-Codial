@@ -4,15 +4,15 @@
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Codial Home</title>
+    <title>Codial Edit profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/bootstrap-extend.css">	
 	<link rel="stylesheet" href="/css/master_style.css">
 	<link rel="stylesheet" href="/css/skins/_all-skins.css">	
- </head>
-<body class=" skin-blue-light sidebar-collapse">
+</head>
+<body class=" skin-green-light sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -22,7 +22,7 @@
 	  	
       <!-- Sidebar toggle button-->
 		  <a href="/">
-			<h4 style="color:white; margin-left: -213px;">Codial User Profile Page</h4>
+			<h4 style="color:white; margin-left: -213px;">Codial User Edit Profile</h4>
 		  </a>	
 		
       <div class="navbar-custom-menu">
@@ -38,7 +38,7 @@
               <li class="user-body bt-0">
                 <div class="row no-gutters">
                   <div class="col-12 text-left">
-                    <a href="/users/edit_user/"><i class="ion ion-person"></i> Edit My Profile</a>
+                    <a href="/users/user_profile"><i class="ion ion-person"></i>My Profile</a>
                   </div>
 				<div role="separator" class="divider col-12"></div>
 				  <div class="col-12 text-left">
@@ -55,12 +55,7 @@
     </nav>
   </header>
   
-<!-- <div class="flash-messages">
-  <% if(flash.success && flash.success.length > 0){ %>
-    <h4><%= flash.success %></h4>
-    <%}%>
 
-</div> -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Main content -->
@@ -69,13 +64,19 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">User Details .</h3>
+          <h3 class="box-title">Update Users Data</h3>
         </div>
         <div class="box-body">
-            <ul type="circle">
-                <li>Email: <%=user.email%></li>
-                <li>Name: <%=user.name%></li>
-            </ul>
+            <form action="/users/update_user" method="post">
+                <div class="form-group  w-25">
+                <input type="hidden" name="userid" value="<%=user.id%>">
+              Name:<input type="text" name="name"  value="<%=user.name%>" class="form-control input-sm" placeholder="Update your name here">
+               Email:<input type="text" name="email" value="<%=user.email%>"  class="form-control input-sm" placeholder="Update your email here">
+               Password:<input type="text" name="password" value="<%=user.password%>"  class="form-control input-sm" placeholder="Update your password here">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Update User">
+            <button  class="btn btn-danger" type="reset" value="Reset" > Reset </button>
+            </form>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -97,7 +98,6 @@
 	
 	<!-- Bootstrap 4.1-->
 	<script src="/js/bootstrap.min.js"></script>
-
   <script>
     <% if (flash.success && flash.success.length > 0) {%>
         new Noty({

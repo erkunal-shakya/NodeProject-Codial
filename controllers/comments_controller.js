@@ -13,12 +13,43 @@ module.exports.createcomment=(req,res)=>{
             // console.log(postcomment)
             postdata.comments.push(postcomment);
             postdata.save();
+            req.flash('success','Comment Added to the post.')
             res.redirect('back')
         }).catch((err)=>{
-            console.log('Error while saving Comments on post',err)
+            req.flash('error',`Error while saving Comments on post ${err}`)
+            res.redirect('back')
            })
     }
    }).catch((err)=>{
     console.log('Error while gtting Postin Comments schema',err)
    })
+}
+
+module.exports.destroy=(req,res)=>{
+  CommentSchema.findById(req.params.id).then((commentdata)=>{
+    if(commentdata.user == req.user.id)
+    {
+      const PostId=commentdata.post;
+      CommentSchema.findByIdAndDelete(req.params.id).then(()=>{
+        console.log('User Comment deleted');
+      });
+
+      PostSchema.findByIdAndUpdate(PostId, {$pull:{comments:req.params.id}}).then(()=>{
+        console.log('User Comment pulled out');
+        req.flash('success','Comment Deleted Successfully');
+        return res.redirect('back');
+
+      }).catch((err)=>{
+        console.log('Error while deleteing users Comment: ',err);
+        req.flash('error',err)
+
+      });
+
+    }
+  }).catch((err)=>{
+    console.log('Error while deleteing users Comment: ',err);
+    req.flash('error',err)
+    return res.redirect('back');
+
+  })
 }

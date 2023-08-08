@@ -10,6 +10,8 @@ const session=require('express-session');
 const passport = require('passport');
 const passportLocal=require('./configs/passport');
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
+const customMware= require('./configs/middleware');
 
 // const sassMiddleware = require('node-sass-middleware');
 
@@ -70,7 +72,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser); // calling the custom function  to set user in locals
-
+app.use(flash());
+app.use(customMware.setflash);
 app.use('/',require('./routes'));
 
 
